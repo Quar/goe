@@ -1,0 +1,19 @@
+language: generic
+
+
+branches:
+  only:
+    - master
+
+script:
+  - mkdir _site
+  - cp README.md _site
+  - cp goe _site
+
+deploy:
+  local_dir: _site
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  on:
+    branch: master

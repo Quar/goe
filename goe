@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+# make Golang project "outside" of `$GOPATH`.
+
+set -eu
+
+
+function show_help {
+
+    cat <<"EOF"
+
+goe -- create go project anywhere
+
+Usage:
+    goe init -- setup(simlink) of current go project
+    goe env [variable] -- show go env
+    goe run main.go -- run go project with GOPATH set
+    goe build -- go build current project
+
+Note:
+  run `goe` inside go project root folder like this
+
+  my-go-project/
+      main.go
+      vendor/
+          folder1/
+              package1/
+                  package1-code.go
+          package2/
+              package2-code.go
+
+
+  where within `main.go`, one can import packages like:
+
+  ``` go
+  import (
+      "fmt"
+
+      "folder1/package1"
+      "package2"
+  )
+  ```
+
+Caveats:
+  `goe` meddle GOPATH by using `GOPATH=$HOME/.go.local/`, and create simlink
+  of current project directory under `$HOME/.go.local/` to allow go-tools
+  to do path searching as if this project was created under `$GOPATH/src`.
+EOF
+
+}
+
+
+GOPATH=$HOME/.go.local
+PROJPATH=$PWD
+PROJDIR=$(basename $PROJPATH)
+
+if [ ! -d $GOPATH/src ]; then
+    mkdir -p $GOPATH/src
+fi
+
+if [ $# -lt 1 ]; then
+    show_help
+    exit 0
+elif [[ $1 =~ -h|--help ]]; then
+    show_help
+    exit 0
+elif [ "$1" = "init" ]; then
+    cd $GOPATH/src
+    ln -sf $PROJPATH $GOPATH/src/$PROJDIR
+elif [[ $1 =~ env|run|build|install|test ]]; then
+    cd $GOPATH/src/$PROJDIR
+    go $@
+else
+    show_help
+    exit 1
+fi
