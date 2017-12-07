@@ -18,7 +18,7 @@ published naturally.
 #### Install:
 
 ``` bash
-wget quar.github.io/goe/goe /path/included/in/PATH/goe
+wget quar.github.io/goe/goe -O /path/included/in/PATH/goe
 ```
 
 #### Usage:
