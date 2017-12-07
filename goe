@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # make Golang project "outside" of `$GOPATH`.
+# author: Quar
 
 set -eu
 

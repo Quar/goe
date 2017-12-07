@@ -15,22 +15,22 @@ published naturally.
 
 `goe` is a gophers hope to make this happen.
 
-###Install:
+#### Install:
 
 ``` bash
 wget quar.github.io/goe/goe /path/included/in/PATH/goe
 ```
 
-###Usage:
+#### Usage:
 
 ``` bash
 goe init -- setup(simlink) of current go project
 goe env [variable] -- show go env
-goe run main.go -- run go project with GOPATH set
+goe run main.go -- run go project as if it was under `$GOPATH/src`
 goe build -- go build current project
 ```
 
-###Note:
+#### Note:
 
   run `goe` inside go project root folder like this
 
@@ -56,7 +56,7 @@ import (
 )
 ```
 
-###Caveats:
+#### Caveats:
 
   `goe` meddles `$GOPATH` by using `GOPATH=$HOME/.go.local/`, and then create
   simlink of current project directory under `$HOME/.go.local/`, which allows
