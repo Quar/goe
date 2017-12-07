@@ -4,7 +4,7 @@ branches:
   - master
 script:
 - mkdir _site
-- cp README.md _site
+- cat README.md docs/banner.md > _site/README.md
 - cp goe _site
 deploy:
   local_dir: _site
