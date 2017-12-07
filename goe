@@ -12,7 +12,6 @@ function show_help {
 goe -- create go project anywhere
 
 Usage:
-    goe init -- setup(simlink) of current go project
     goe env [variable] -- show go env
     goe run main.go -- run go project with GOPATH set
     goe build -- go build current project
@@ -50,12 +49,20 @@ EOF
 }
 
 
-GOPATH=$HOME/.go.local
 PROJPATH=$PWD
 PROJDIR=$(basename $PROJPATH)
 
-if [ ! -d $GOPATH/src ]; then
-    mkdir -p $GOPATH/src
+GOPATH=$HOME/.go.local
+GOSRCPATH=$GOPATH/src
+GOPROJPATH=$GOSRCPATH/$PROJDIR
+
+if [ ! -d $GOSRCPATH ]; then
+    mkdir -p $GOSRCPATH
+fi
+
+if [ ! $GOPROJPATH -ef $PROJPATH ]; then
+    cd $GOSRCPATH
+    ln -sf $PROJPATH $GOPROJPATH
 fi
 
 if [ $# -lt 1 ]; then
@@ -64,11 +71,8 @@ if [ $# -lt 1 ]; then
 elif [[ $1 =~ -h|--help ]]; then
     show_help
     exit 0
-elif [ "$1" = "init" ]; then
-    cd $GOPATH/src
-    ln -sf $PROJPATH $GOPATH/src/$PROJDIR
 elif [[ $1 =~ env|run|build|install|test ]]; then
-    cd $GOPATH/src/$PROJDIR
+    cd $GOPROJPATH
     go $@
 else
     show_help

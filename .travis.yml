@@ -1,19 +1,18 @@
 language: generic
-
-
 branches:
   only:
-    - master
-
+  - master
 script:
-  - mkdir _site
-  - cp README.md _site
-  - cp goe _site
-
+- mkdir _site
+- cp README.md _site
+- cp goe _site
 deploy:
   local_dir: _site
   provider: pages
   skip_cleanup: true
-  github_token: $GITHUB_TOKEN
+  github_token: "$GITHUB_TOKEN"
   on:
     branch: master
+env:
+  global:
+    secure: gHnslPszCGrwO/PY1aQ4YOoNhhHa/gdBxEAAELum3UwJQX4qRjUlFnj5tHU/Gcf+CcroLyhUS1XnLdWhw8jvjTfAPytJU/Xby4sG/4hJ7iU6PJhqVz3+ftQsZKx39eUX/qTUMF0mYUz0tgFjv2R8dxENyTxDViz+cM87JkWr6HFJBuJ9QwFebaWXs6rECwfKunyNy9Sais5lX6ZayWIY7GmcWiYKzJcYaq22sdlcgkak2SBrPL6F8iTpHBwQlXcZa7BukrIgdie8nDE3m+SHBgqqlCqn8V1fLllZRJvAphQu/0M//Tw7zj9z3/NqpTMV7i/v7VBvZ4sBrYyoV0qiDr4FIDjA0y6TJCi6TEPXWIQY8Cs7BhZxNI2VSnJQdxgNnBT51Y3qgTXvQlHPUJHHFWynOtUpwTNIRvG65c9o5TPFFK5zA+DTpnHInHVEsqQZslFlip0jNzjd1y3vWF8iBIsz+D9MmufJ2yRwwA3/+2tTRcoxJUiWCZE3wSinvOs7Ju6lQ/4zPIWr2QxIE4/Q+GJ7AZmcrf4G6KR4o3NZt4NQKKDyvHFWQXAcPk9yh1FQzDhQovcehcMfNUBM+7urBcvbfpCSC+k35W/adNMKlWPi1E1jwbCVTbsK83Ph1H69DxObPgBVOmJLCfIEiMd5Wq4R/5OyUCxiijafYAWvYSc=

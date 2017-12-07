@@ -24,7 +24,6 @@ wget quar.github.io/goe/goe -O /path/included/in/PATH/goe
 #### Usage:
 
 ``` bash
-goe init -- setup(simlink) of current go project
 goe env [variable] -- show go env
 goe run main.go -- run go project as if it was under `$GOPATH/src`
 goe build -- go build current project
