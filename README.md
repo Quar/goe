@@ -18,7 +18,7 @@ published naturally.
 #### Install:
 
 ``` bash
-wget quar.github.io/goe/goe -O /path/included/in/PATH/goe
+wget -4 quar.github.io/goe/goe -O /path/included/in/PATH/goe
 chmod u+x /path/included/in/PATH/goe
 ```
 
