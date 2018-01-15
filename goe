@@ -11,10 +11,13 @@ function show_help {
 
 goe -- create go project anywhere
 
-Usage:
+Usage (same as go):
     goe env [variable] -- show go env
     goe run main.go -- run go project with GOPATH set
     goe build -- go build current project
+    goe get -- get libs
+    goe test -- test
+    goe list -- list packages
 
 Note:
   run `goe` inside go project root folder like this
@@ -71,7 +74,7 @@ if [ $# -lt 1 ]; then
 elif [[ $1 =~ -h|--help ]]; then
     show_help
     exit 0
-elif [[ $1 =~ env|run|build|install|test ]]; then
+elif [[ $1 =~ env|run|build|install|test|get|list ]]; then
     cd $GOPROJPATH
     go $@
 else

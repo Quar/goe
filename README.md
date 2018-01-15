@@ -22,12 +22,15 @@ wget -4 quar.github.io/goe/goe -O /path/included/in/PATH/goe
 chmod u+x /path/included/in/PATH/goe
 ```
 
-#### Usage:
+#### Usage (same as `go`):
 
 ``` bash
 goe env [variable] -- show go env
 goe run main.go -- run go project as if it was under `$GOPATH/src`
 goe build -- go build current project
+goe get -- get libs
+goe test -- test
+goe list -- list packages
 ```
 
 #### Note:
